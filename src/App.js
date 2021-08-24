@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import Items from "./Components/Items";
 
 function App() {
   const [items, setItems] = useState(
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Items items={items} />;
     </>
   );
 }
