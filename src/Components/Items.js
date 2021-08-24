@@ -17,7 +17,7 @@ export default function Items({ items, setItems }) {
       <ol className="list-group list-group">
         {items.map((item) => (
           <li
-            key={`${item.title} - ${item.desc} - ${item.price}`}
+            key={item.id}
             className="list-group-item d-flex justify-content-between align-items-start"
           >
             <div className="ms-2 me-auto">
