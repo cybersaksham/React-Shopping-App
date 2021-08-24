@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Items items={items} />;
+      <Items items={items} setItems={setItems} />;
     </>
   );
 }
