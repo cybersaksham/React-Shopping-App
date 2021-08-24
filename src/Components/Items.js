@@ -2,14 +2,13 @@ import React from "react";
 
 export default function Items({ items, setItems }) {
   const handleCart = (e) => {
-    let item = JSON.parse(e.target.getAttribute("value"));
-    let ind__ = items.indexOf(item);
-    let newItem__ = item;
-    newItem__.cart = !item.cart;
-    let newItems__ = items;
-    newItems__[ind__] = newItem__;
-    setItems(newItems__);
-    sessionStorage.setItem("items", JSON.stringify(newItems__));
+    let id__ = Number(e.target.getAttribute("value"));
+    let cart__ = JSON.parse(sessionStorage.getItem("cart")) || [];
+    let ind__ = cart__.indexOf(id__);
+    if (ind__ === -1) cart__.push(id__);
+    else cart__.splice(ind__, 1);
+    setItems(items);
+    sessionStorage.setItem("cart", JSON.stringify(cart__));
   };
 
   return (
@@ -31,7 +30,7 @@ export default function Items({ items, setItems }) {
               <div>
                 <i
                   onClick={handleCart}
-                  value={JSON.stringify(item)}
+                  value={item.id}
                   className="bi bi-cart-plus-fill"
                 ></i>
               </div>
