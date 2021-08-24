@@ -13,9 +13,14 @@ export default function Items({ items }) {
               <div className="fw-bold">{item.title}</div>
               {item.desc}
             </div>
-            <span className="badge bg-primary rounded-pill">
-              $ {item.price}
-            </span>
+            <div className="ms-2">
+              <span className="badge bg-primary rounded-pill">
+                $ {item.price}
+              </span>
+              <div>
+                <i className="bi bi-cart-plus-fill"></i>
+              </div>
+            </div>
           </li>
         ))}
       </ol>
