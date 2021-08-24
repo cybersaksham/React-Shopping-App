@@ -3,9 +3,20 @@ import React from "react";
 export default function Items({ items }) {
   return (
     <div className="container my-3">
-      {items.map((item) => (
-        <p key={`${item.title} - ${item.desc}`}>{item.title}</p>
-      ))}
+      <ol className="list-group list-group">
+        {items.map((item) => (
+          <li
+            key={`${item.title} - ${item.desc}`}
+            className="list-group-item d-flex justify-content-between align-items-start"
+          >
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">{item.title}</div>
+              {item.desc}
+            </div>
+            <span className="badge bg-primary rounded-pill">$ 14</span>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
