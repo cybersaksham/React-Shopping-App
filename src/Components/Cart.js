@@ -27,6 +27,12 @@ export default function Cart({ items }) {
     setTotal(initCart().total);
   };
 
+  const clearCart = () => {
+    sessionStorage.removeItem("cart");
+    setCart(initCart().cart);
+    setTotal(initCart().total);
+  };
+
   return (
     <div className="container my-3">
       <ol className="list-group list-group">
@@ -70,8 +76,12 @@ export default function Cart({ items }) {
         })}
       </ol>
       <div className="my-2 text-center">
-        <button className="m-2 btn btn-outline-primary">Checkout</button>
-        <button className="m-2 btn btn-outline-danger">Clear</button>
+        <button onClick={clearCart} className="m-2 btn btn-outline-primary">
+          Checkout
+        </button>
+        <button onClick={clearCart} className="m-2 btn btn-outline-danger">
+          Clear
+        </button>
       </div>
     </div>
   );
