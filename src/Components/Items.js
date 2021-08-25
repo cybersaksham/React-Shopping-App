@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-export default function Items({ items }) {
+export default function Items({ items, showAlert }) {
   const [cart, setCart] = useState(
     JSON.parse(sessionStorage.getItem("cart")) || []
   );
@@ -9,8 +9,13 @@ export default function Items({ items }) {
     let id__ = Number(e.target.getAttribute("value"));
     let cart__ = JSON.parse(sessionStorage.getItem("cart")) || [];
     let ind__ = cart__.indexOf(id__);
-    if (ind__ === -1) cart__.push(id__);
-    else cart__.splice(ind__, 1);
+    if (ind__ === -1) {
+      cart__.push(id__);
+      showAlert("success", "Item added to cart");
+    } else {
+      cart__.splice(ind__, 1);
+      showAlert("success", "Item removed from cart");
+    }
     sessionStorage.setItem("cart", JSON.stringify(cart__));
     setCart(cart__);
   };

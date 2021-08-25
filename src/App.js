@@ -55,10 +55,10 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Alert />
+      <Alert alert={alert} />
       <Switch>
         <Route exact path="/">
-          <Items items={items} />
+          <Items items={items} showAlert={showAlert} />
         </Route>
         <Route exact path="/cart">
           <Cart items={items} />
