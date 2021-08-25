@@ -12,6 +12,15 @@ export default function Cart({ items }) {
 
   const [cart, setCart] = useState(initCart());
 
+  const handleCart = (e) => {
+    let id__ = Number(e.target.getAttribute("value"));
+    let cart__ = JSON.parse(sessionStorage.getItem("cart")) || [];
+    let ind__ = cart__.indexOf(id__);
+    if (ind__ !== -1) cart__.splice(ind__, 1);
+    sessionStorage.setItem("cart", JSON.stringify(cart__));
+    setCart(initCart());
+  };
+
   return (
     <div className="container my-3">
       <ol className="list-group list-group">
@@ -29,6 +38,13 @@ export default function Cart({ items }) {
                 <span className="badge bg-primary rounded-pill">
                   $ {item.price}
                 </span>
+                <div>
+                  <i
+                    onClick={handleCart}
+                    value={item.id}
+                    className="bi bi-cart-dash-fill"
+                  ></i>
+                </div>
               </div>
             </li>
           );
