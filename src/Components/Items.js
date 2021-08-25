@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-export default function Items({ items, setItems }) {
+export default function Items({ items }) {
   const [cart, setCart] = useState(
     JSON.parse(sessionStorage.getItem("cart")) || []
   );
