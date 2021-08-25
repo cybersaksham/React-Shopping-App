@@ -61,7 +61,7 @@ function App() {
           <Items items={items} showAlert={showAlert} />
         </Route>
         <Route exact path="/cart">
-          <Cart items={items} />
+          <Cart items={items} showAlert={showAlert} />
         </Route>
       </Switch>
     </Router>

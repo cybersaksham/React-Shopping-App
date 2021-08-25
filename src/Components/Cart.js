@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Cart({ items }) {
+export default function Cart({ items, showAlert }) {
   const initCart = () => {
     let cart__ = JSON.parse(sessionStorage.getItem("cart")) || [];
     let fin_cart__ = [];
@@ -25,9 +25,12 @@ export default function Cart({ items }) {
     sessionStorage.setItem("cart", JSON.stringify(cart__));
     setCart(initCart().cart);
     setTotal(initCart().total);
+    showAlert("success", "Item removed from cart");
   };
 
   const clearCart = () => {
+    if (cart.length === 0) showAlert("danger", "Cart is empty");
+    else showAlert("success", "Cart cleared");
     sessionStorage.removeItem("cart");
     setCart(initCart().cart);
     setTotal(initCart().total);
