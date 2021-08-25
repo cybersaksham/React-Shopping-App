@@ -4,13 +4,18 @@ export default function Cart({ items }) {
   const initCart = () => {
     let cart__ = JSON.parse(sessionStorage.getItem("cart")) || [];
     let fin_cart__ = [];
+    let total__ = 0;
     items.forEach((item) => {
-      if (cart__.indexOf(item.id) !== -1) fin_cart__.push(item);
+      if (cart__.indexOf(item.id) !== -1) {
+        fin_cart__.push(item);
+        total__ += item.price;
+      }
     });
-    return fin_cart__;
+    return { cart: fin_cart__, total: total__ };
   };
 
-  const [cart, setCart] = useState(initCart());
+  const [cart, setCart] = useState(initCart().cart);
+  const [total, setTotal] = useState(initCart().total);
 
   const handleCart = (e) => {
     let id__ = Number(e.target.getAttribute("value"));
