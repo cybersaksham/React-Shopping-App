@@ -23,12 +23,24 @@ export default function Cart({ items }) {
     let ind__ = cart__.indexOf(id__);
     if (ind__ !== -1) cart__.splice(ind__, 1);
     sessionStorage.setItem("cart", JSON.stringify(cart__));
-    setCart(initCart());
+    setCart(initCart().cart);
+    setTotal(initCart().total);
   };
 
   return (
     <div className="container my-3">
       <ol className="list-group list-group">
+        <li
+          className="my-2 list-group-item active d-flex justify-content-between align-items-start"
+          aria-current="true"
+        >
+          <div className="ms-2 me-auto">
+            <div className="fw-bold">Total</div>
+          </div>
+          <div className="ms-2">
+            <span className="badge bg-light text-dark rounded-pill">$ {total}</span>
+          </div>
+        </li>
         {cart.map((item) => {
           return (
             <li
