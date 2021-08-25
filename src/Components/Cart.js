@@ -38,7 +38,9 @@ export default function Cart({ items }) {
             <div className="fw-bold">Total</div>
           </div>
           <div className="ms-2">
-            <span className="badge bg-light text-dark rounded-pill">$ {total}</span>
+            <span className="badge bg-light text-dark rounded-pill">
+              $ {total}
+            </span>
           </div>
         </li>
         {cart.map((item) => {
@@ -67,6 +69,10 @@ export default function Cart({ items }) {
           );
         })}
       </ol>
+      <div className="my-2 text-center">
+        <button className="m-2 btn btn-outline-primary">Checkout</button>
+        <button className="m-2 btn btn-outline-danger">Clear</button>
+      </div>
     </div>
   );
 }
