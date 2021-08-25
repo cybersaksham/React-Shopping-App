@@ -40,6 +40,18 @@ function App() {
     },
   ]);
 
+  const [alert, setAlert] = useState(null);
+
+  // Function to show alerts
+  const showAlert = (type, msg) => {
+    setAlert({ type: type, msg: msg });
+    if (localStorage["timeout"] != null) clearTimeout(localStorage["timeout"]);
+    let s = setTimeout(() => {
+      setAlert(null);
+    }, 2000);
+    localStorage["timeout"] = s;
+  };
+
   return (
     <Router>
       <Navbar />
