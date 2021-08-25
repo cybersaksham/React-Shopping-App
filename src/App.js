@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Items from "./Components/Items";
 import Cart from "./Components/Cart";
+import Alert from "./Components/Alert";
 
 function App() {
   const [items, setItems] = useState([
@@ -42,6 +43,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Alert />
       <Switch>
         <Route exact path="/">
           <Items items={items} />
