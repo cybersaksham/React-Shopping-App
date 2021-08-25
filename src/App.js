@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Items from "./Components/Items";
@@ -38,10 +39,17 @@ function App() {
   ]);
 
   return (
-    <>
+    <Router>
       <Navbar />
-      <Items items={items} />;
-    </>
+      <Switch>
+        <Route exact path="/">
+          <Items items={items} />
+        </Route>
+        <Route exact path="/cart">
+          <Cart items={items} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
